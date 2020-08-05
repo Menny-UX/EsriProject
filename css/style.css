@@ -13,7 +13,7 @@ html {
   @media (max-width: 900px) {
     html {
       font-size: 50%; } }
-  @media (max-width: 1200px) {
+  @media (max-width: 1800px) {
     html {
       font-size: 75%; } }
 
@@ -227,14 +227,16 @@ body {
 .modal-dialog .modal-body {
   padding: 2.5rem 6rem 8rem; }
 
+#registrationModal.modal.fade .modal-dialog,
+.body__container #registrationModal.modal.in .modal-dialog {
+  width: 45rem; }
+
+.modal.fade .modal-dialog,
 .body__container .modal.in .modal-dialog {
   min-width: 45rem;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
-
-.modal.fade .modal-dialog {
-  width: 45rem; }
+  transform: translate(-50%, -50%) !important; }
 
 .modal-body {
   background-color: #ececec; }
@@ -279,8 +281,11 @@ body {
   box-shadow: 0px;
   background-color: #fff; }
 
+.modal.fade.in {
+  background-color: rgba(0, 0, 0, 0.7); }
+
 #airPlanModal.modal.in .modal-dialog {
-  width: 60%; }
+  width: 52%; }
 
 #airPlanModal .modal-content {
   background-color: #fff;
@@ -454,7 +459,7 @@ body {
   .section__secondary-header img {
     width: 2rem;
     height: 2rem;
-    margin: 0rem 2rem 0 1rem; }
+    margin: 1rem 2rem 1rem 1rem; }
   .section__secondary-header .section__secondary {
     font-weight: bolder;
     font-size: 1.4rem; }
@@ -533,7 +538,7 @@ body {
 
 .body__main {
   width: 100%;
-  height: calc(100% - 63px);
+  height: calc(100% - 72px);
   display: flex; }
 
 #viewDiv {
@@ -597,6 +602,9 @@ body {
 
 .sidebar__extension-content ul#tab-list {
   list-style-type: none; }
+
+.clickable-back {
+  cursor: pointer; }
 
 .dropdown-menu {
   padding: 1rem; }
@@ -675,6 +683,10 @@ body {
       font-size: 1rem;
       background-color: #ffdf55;
       color: #000; }
+
+.footer {
+  height: 9px;
+  background-color: #8b1538; }
 
 .sidebar {
   flex: 0 0 65px;

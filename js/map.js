@@ -51,6 +51,7 @@ require([ "esri/Map",
 
 
     function personalizeUI() {
+   
         ////personalize the wedgets
         const satalite = document.querySelector('.esri-component.esri-basemap-toggle');
         
@@ -81,7 +82,26 @@ require([ "esri/Map",
                 <div class="live-button-text"> Live Traffic </div>
         `;
         UIRightTop.appendChild(liveIcon);
+
+       
+        const canvas = document.querySelector('.esri-view-surface');
+
+        canvas.addEventListener("click", ()=>closeExtention() )
+        const closeExtention = () => {
+
+            for (let i = 0; i < sideOptions.length; i++) {
+                sideOptions[i].classList.remove("active");
+              }
+            sidebareExtension.classList.remove("open");
+            sidebareExtension.innerHTML = "";
+            ActiveSection = ""
+        }
+
     }
 
-    window.onload = personalizeUI;
+    // window.onload = personalizeUI;
+
+    window.addEventListener ? 
+    window.addEventListener("load",personalizeUI,false) : 
+    window.attachEvent && window.attachEvent("onload",personalizeUI);
 });

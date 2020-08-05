@@ -35,6 +35,7 @@
       }
 
       //Fetch data From Json
+      // , {mode: 'cors'}
       const fetchbusData = async () =>{
         var fetchedData = await fetch('../json/buses.json');
         fetchedData = await fetchedData.json();
@@ -181,7 +182,7 @@
         }else if(sideMenu[section].content){
           return `
           <div class="section__secondary-header">
-          <img src="./img/nav/back.png"/>
+          <img src="./img/nav/back.png" />
           <div class="bus_Item-header">
             <img class="bus_icon" src=${sideMenu[section].img}>
             <div class="bus_name">Aviation</div>
@@ -240,9 +241,35 @@
         
         for (let i = 0; i < stationList.length; i++) {
           stationList[i].addEventListener("click",
-            ()=>stationDetailSection( stationList[i] )
+          ()=>stationDetailSection( stationList[i] )
           );
         }
+      }
+
+      const BackToStationListEventListener = () => {
+        const backToStation = document.querySelector('.section__secondary-header #backToStationDetail');
+        
+        backToStation.addEventListener("click",
+          ()=>stationListfunc()
+        );
+
+      }
+      const stationListfunc = () =>{
+        debugger;
+        busDetailSection( {id: "1-bus"} );
+        stationItemEventListeners();
+        backToBusListEventLister();
+      }
+      const backToBusListEventLister = () => {
+        const backToBus = document.querySelector('.section__secondary-header #busDetailStations');
+        
+        backToBus.addEventListener("click",
+          ()=>busListfunc()
+        );
+      }
+      const busListfunc = () => {
+        getContentForSection();
+        busItemEventListeners();
       }
       ///////////////////////Events
       ////Station List
@@ -252,7 +279,7 @@
         const station = GlobalfetchedData.Stations.find((el)=> `${el.id}-station` === selectedStation.id)
         const BusListForSec = populatingList( GlobalfetchedData.Buses , busListTemp );
         sectionContent.innerHTML = `<div class="section__secondary-header" >
-        <img src="./img/nav/back.png"/>
+        <img src="./img/nav/back.png" class="clickable-back" id="backToStationDetail"/>
         <div class="bus_Item-header">
         <div class="bus_name">${station.name}</div>
         </div>
@@ -283,15 +310,16 @@
           ${BusListForSec.join(" ")}
         </div>
         `;
+        BackToStationListEventListener()
       }
       
       ////Bus List
       function busDetailSection (selectedBus){
         const sectionContent = RemoveExtensionContent();
-        const bus = GlobalfetchedData.Buses.find((el)=> `${el.id}-bus` === selectedBus.id)
+        const bus = GlobalfetchedData.Buses.find((el)=> `${el.id}-bus` === selectedBus.id) || GlobalfetchedData.Buses[0]
         const StationListForBus = populatingList( GlobalfetchedData.Stations , stationDetailTemp );
         sectionContent.innerHTML = `<div class="section__secondary-header">
-        <img src="./img/nav/back.png"/>
+        <img src="./img/nav/back.png" class="clickable-back" id="busDetailStations" />
         <div class="bus_Item-header">
           <div class="bus_id">${bus.id}</div>
           <div class="bus_name">${bus.name}</div>
@@ -301,7 +329,9 @@
           ${StationListForBus.join(" ")}
         </div>
         `;
+
         stationItemEventListeners();
+        backToBusListEventLister();
       }
 
       ////Tabs Events

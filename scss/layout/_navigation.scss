@@ -57,7 +57,9 @@
 .sidebar__extension-content ul#tab-list{
     list-style-type: none;
 }
-
+.clickable-back{
+    cursor: pointer;
+}
 .dropdown-menu{
     padding: 1rem;
     & .dropdown-item{
