@@ -198,6 +198,9 @@ body {
     font-size: 1rem;
     font-weight: bolder; }
 
+.esri-component.esri-popup {
+  opacity: 0; }
+
 #register-modal .modal-header {
   display: flex;
   justify-content: space-evenly;
@@ -507,7 +510,7 @@ body {
 
 .tab-pane.fade,
 .list_wrapper {
-  height: 83%;
+  height: 92%;
   overflow-x: hidden;
   overflow-y: scroll; }
 
@@ -606,17 +609,27 @@ body {
 .clickable-back {
   cursor: pointer; }
 
-.dropdown-menu {
-  padding: 1rem; }
-  .dropdown-menu .dropdown-item {
-    display: block;
-    margin: 1rem; }
-  .dropdown-menu a.dropdown-item {
+.dropdown .dropdown-tiper {
+  position: absolute;
+  background-color: white;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: rotate(45deg);
+  top: -.5rem;
+  left: 83%; }
+
+.dropdown .dropdown-menu {
+  padding: 1rem;
+  right: 0;
+  left: auto; }
+  .dropdown .dropdown-menu .dropdown-item {
+    display: block; }
+  .dropdown .dropdown-menu a.dropdown-item {
     color: #8b1538;
     display: flex;
-    width: 19rem;
-    padding: 4px; }
-  .dropdown-menu a:focus, .dropdown-menu a:hover {
+    align-items: center;
+    width: 19rem; }
+  .dropdown .dropdown-menu a:focus, .dropdown .dropdown-menu a:hover {
     color: #530d22;
     font-weight: bolder;
     text-decoration: none; }

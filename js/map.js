@@ -4,9 +4,11 @@ require([ "esri/Map",
         "esri/widgets/Home",
         "esri/widgets/Locate",
         "esri/widgets/BasemapToggle",
-        "esri/widgets/ScaleBar"
+        "esri/widgets/ScaleBar",
+        "esri/Graphic",
+        "esri/layers/GraphicsLayer"
      ], 
-    function(Map, MapView, Search, Home, Locate, BasemapToggle, ScaleBar) {
+    function(Map, MapView, Search, Home, Locate, BasemapToggle, ScaleBar, Graphic, GraphicsLayer) {
     var map = new Map({
         basemap: "streets"
     });
@@ -27,6 +29,56 @@ require([ "esri/Map",
     var locateWidget = new Locate({
         view: view,
     });
+
+    const arrPoints = [
+        {long: '51.8839', lat: '25.2548'},
+        {long: '51.9438', lat: '25.2849'},
+        {long: '51.4645', lat: '25.2948'},
+        {long: '51.3845', lat: '25.2447'},
+        {long: '51.2955', lat: '25.2645'},
+        {long: '51.5851', lat: '25.2736'},
+        {long: '51.4636', lat: '25.2538'},
+        {long: '51.3852', lat: '25.2557'},
+        {long: '51.2945', lat: '25.2565'},
+        {long: '51.5843', lat: '25.2576'},
+    
+    ]
+
+    var graphicsLayer = new GraphicsLayer();
+    map.add(graphicsLayer);
+
+
+    const hideMapPoints = () => {
+        map.remove(graphicsLayer);
+    }
+
+
+    arrPoints.forEach(pt => {
+        let point = {
+            type: "point",
+            longitude: pt.long,
+            latitude: pt.lat
+            };
+
+            var simpleMarkerSymbol = {
+            type: "simple-marker",
+            color: [139, 21, 56], 
+            outline: {
+                color: [255, 255, 255],
+                width: 1
+            }
+            };
+            
+            let pointGraphic = new Graphic({
+            geometry: point,
+            symbol: simpleMarkerSymbol
+            });
+            
+            graphicsLayer.add(pointGraphic);
+    });
+
+      
+
     var basemapToggle = new BasemapToggle({
         view: view,  // The view that provides access to the map's "streets" basemap
         nextBasemap: "hybrid"  // Allows for toggling to the "hybrid" basemap
@@ -104,4 +156,6 @@ require([ "esri/Map",
     window.addEventListener ? 
     window.addEventListener("load",personalizeUI,false) : 
     window.attachEvent && window.attachEvent("onload",personalizeUI);
+
+
 });

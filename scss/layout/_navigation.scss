@@ -60,17 +60,27 @@
 .clickable-back{
     cursor: pointer;
 }
-.dropdown-menu{
+.dropdown .dropdown-tiper{
+    position: absolute;
+    background-color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    transform: rotate(45deg);
+    top: -.5rem;
+    left: 83%;
+}
+.dropdown .dropdown-menu{
     padding: 1rem;
+    right: 0;
+    left: auto;
     & .dropdown-item{
         display: block;
-        margin: 1rem;
     }
     & a.dropdown-item {
         color: $color-primary;
         display: flex;
+        align-items: center;
         width: 19rem;
-        padding: 4px;
     }
     & a:focus, a:hover {
         color: $color-primary-dark;

@@ -9,9 +9,6 @@
       const sideOptions = document.querySelectorAll('.sidebar__controle-item');
       const sidebareExtension = document .querySelector('.sidebar__extension');
       
-      const sideContent = document.querySelector('.sidebar__extension .sidebar__extension-content')
-      
-
       
       // static nav hierarcy
 
@@ -185,7 +182,7 @@
           <img src="./img/nav/back.png" />
           <div class="bus_Item-header">
             <img class="bus_icon" src=${sideMenu[section].img}>
-            <div class="bus_name">Aviation</div>
+            <div class="bus_name">HIA Floor Plan</div>
           </div>
           </div>
           <div class="list_wrapper">
@@ -255,7 +252,6 @@
 
       }
       const stationListfunc = () =>{
-        debugger;
         busDetailSection( {id: "1-bus"} );
         stationItemEventListeners();
         backToBusListEventLister();
@@ -287,6 +283,7 @@
         <img src="./img/nav/more1.png" 
         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-tiper"></div>
           <a class="dropdown-item u-divider-horizontal" href="#">
             <img class="dropdown-item-icon" src="img/nav/marker.png" />
             <div class="dropdown-item-text">Route From</div>
@@ -329,7 +326,7 @@
           ${StationListForBus.join(" ")}
         </div>
         `;
-
+  
         stationItemEventListeners();
         backToBusListEventLister();
       }
